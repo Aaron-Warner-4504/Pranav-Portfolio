@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranav Kodlinge | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts: Inter for that clean Apple look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ios: {
+                            bg: '#000000',
+                            card: '#1c1c1e',
+                            text: '#f5f5f7',
+                            subtext: '#86868b',
+                            accent: '#2997ff', // Apple Blue
+                            border: '#38383a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* --- Core Aesthetics --- */
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hide scrollbar for sleekness but allow scrolling */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); /* Apple's ease */
+            filter: blur(4px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* Stagger delays for lists */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* --- Glassmorphism --- */
+        .glass-panel {
+            background: rgba(28, 28, 30, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- Studio Image Treatment --- */
+        .studio-portrait {
+            /* Updated filter for a vibrant, professional color look */
+            filter: contrast(1.1) brightness(1.05) saturate(1.1);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+        
+        .studio-portrait:hover {
+            transform: scale(1.02);
+            filter: contrast(1.15) brightness(1.1) saturate(1.2);
+        }
+
+        /* --- Typography Gradients --- */
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Navigation (Dynamic Island Style) -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+        <div class="glass-panel px-6 py-3 rounded-full flex items-center gap-8 shadow-2xl transition-all duration-300 hover:scale-105">
+            <a href="#overview" class="text-xs font-medium text-ios-subtext hover:text-white transition-colors">Overview</a>
+            <a href="#experience" class="text-xs font-medium text-ios-subtext hover:text-white transition-colors">Experience</a>
+            <a href="#projects" class="text-xs font-medium text-ios-subtext hover:text-white transition-colors">Projects</a>
+            <a href="#contact" class="text-xs font-medium text-ios-accent hover:text-white transition-colors">Hire Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="overview" class="min-h-screen flex flex-col justify-center items-center relative pt-20 px-6 overflow-hidden">
+        <!-- Background Ambience -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px] -z-10 animate-pulse-slow"></div>
+
+        <div class="text-center max-w-4xl mx-auto z-10">
+            <p class="reveal text-sm font-semibold text-ios-accent uppercase tracking-widest mb-6">Pranav Kodlinge</p>
+            <h1 class="reveal delay-100 text-6xl md:text-8xl font-bold tracking-tight leading-tight mb-6">
+                <span class="text-gradient">Architecting</span><br>
+                Intelligence.
+            </h1>
+            <p class="reveal delay-200 text-xl md:text-2xl text-ios-subtext font-light max-w-2xl mx-auto leading-relaxed">
+                AI Engineer converting LLM research into production-grade enterprise pipelines.
+            </p>
+            
+            <div class="reveal delay-300 mt-12 flex flex-wrap justify-center gap-4">
+                <button onclick="document.getElementById('experience').scrollIntoView()" class="px-8 py-3 bg-white text-black rounded-full font-medium text-sm hover:bg-gray-200 transition-colors">
+                    View Work
+                </button>
+                <a href="resume.pdf" download class="px-8 py-3 glass-panel text-white rounded-full font-medium text-sm hover:bg-white/10 transition-colors flex items-center gap-2">
+                    <i class="fas fa-file-alt text-ios-accent"></i> Resume
+                </a>
+                <button onclick="document.getElementById('contact').scrollIntoView()" class="px-8 py-3 glass-panel text-white rounded-full font-medium text-sm hover:bg-white/10 transition-colors flex items-center gap-2">
+                    <i class="fas fa-paper-plane text-ios-accent"></i> Hire Me
+                </button>
+            </div>
+        </div>
+
+        <!-- Image Reveal -->
+        <div class="reveal delay-300 mt-16 relative w-full max-w-md aspect-[3/4] md:aspect-square mx-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20"></div>
+            <!-- Updated Image Source and applied new filter class -->
+            <img src="image.jpg" alt="Pranav" class="studio-portrait w-full h-full object-cover rounded-2xl shadow-2xl" onerror="this.src='https://placehold.co/600x800/1c1c1e/FFF?text=PK'">
+            
+            <!-- Floating Stats Cards (Bento Style) -->
+            <div class="absolute bottom-10 -left-4 md:-left-12 glass-panel p-4 rounded-2xl z-30 animate-float">
+                <div class="text-2xl font-bold text-white">9.51</div>
+                <div class="text-xs text-ios-subtext uppercase tracking-wider">GPA (PICT)</div>
+            </div>
+            <div class="absolute top-20 -right-4 md:-right-12 glass-panel p-4 rounded-2xl z-30 animate-float" style="animation-delay: 1s;">
+                <div class="text-2xl font-bold text-white">ISRO</div>
+                <div class="text-xs text-ios-subtext uppercase tracking-wider">Rocketry</div>
+                <div class="text-xs text-ios-subtext uppercase tracking-wider">Finalist</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section (Timeline) -->
+    <section id="experience" class="py-32 px-6 bg-black relative">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="reveal text-4xl md:text-5xl font-bold mb-20 text-center">Experience. <span class="text-ios-subtext">Defined.</span></h2>
+            
+            <div class="space-y-24 relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-ios-border to-transparent -translate-x-1/2 hidden md:block"></div>
+
+                <!-- Role 1 -->
+                <div class="reveal relative flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+                    <div class="md:w-1/2 md:text-right">
+                        <h3 class="text-2xl font-bold text-white">Enthral AI</h3>
+                        <p class="text-ios-accent font-medium mb-2">AI Engineer</p>
+                        <p class="text-sm text-ios-subtext">July 2025 — Present</p>
+                    </div>
+                    <div class="hidden md:block w-4 h-4 bg-ios-accent rounded-full absolute left-1/2 -translate-x-1/2 shadow-[0_0_15px_#2997ff]"></div>
+                    <div class="md:w-1/2 glass-panel p-8 rounded-3xl">
+                        <p class="text-ios-subtext leading-relaxed text-sm">
+                            Architected generative pipelines (LangChain + Groq) to create McKinsey-style presentations. Built a complete PPT → SCORM conversion pipeline featuring AI Narration, dynamic quiz generation, and H5P flashcards. Reduced course dev time from weeks to hours.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="reveal relative flex flex-col md:flex-row-reverse gap-8 md:gap-16 items-center">
+                    <div class="md:w-1/2 md:text-left">
+                        <h3 class="text-2xl font-bold text-white">PICT</h3>
+                        <p class="text-ios-accent font-medium mb-2">AI Researcher</p>
+                        <p class="text-sm text-ios-subtext">Feb 2024 — Present</p>
+                    </div>
+                    <div class="hidden md:block w-4 h-4 bg-white rounded-full absolute left-1/2 -translate-x-1/2 border-4 border-black"></div>
+                    <div class="md:w-1/2 glass-panel p-8 rounded-3xl">
+                        <p class="text-ios-subtext leading-relaxed text-sm">
+                            Researching Indian Sign Language Translation using Deep Learning, NLP, and OpenCV. Developing a real-time bidirectional communication prototype.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="reveal relative flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+                    <div class="md:w-1/2 md:text-right">
+                        <h3 class="text-2xl font-bold text-white">Vodafone Idea</h3>
+                        <p class="text-ios-accent font-medium mb-2">Data Analyst</p>
+                        <p class="text-sm text-ios-subtext">Oct 2024 — Nov 2024</p>
+                    </div>
+                    <div class="hidden md:block w-4 h-4 bg-white rounded-full absolute left-1/2 -translate-x-1/2 border-4 border-black"></div>
+                    <div class="md:w-1/2 glass-panel p-8 rounded-3xl">
+                        <p class="text-ios-subtext leading-relaxed text-sm">
+                            Conducted analytics on customer datasets to build churn prediction models. Applied ML to improve predictive accuracy of service metrics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (Bento Grid) -->
+    <section id="projects" class="py-32 px-6 bg-zinc-950">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="reveal text-4xl md:text-5xl font-bold mb-16 text-center">Creation <span class="text-ios-subtext">Station.</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Large Project -->
+                <div class="reveal md:col-span-2 glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all duration-500 group cursor-default">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
+                            <i class="fas fa-robot text-xl"></i>
+                        </div>
+                        <i class="fas fa-arrow-right text-ios-subtext group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">AutoAgent</h3>
+                    <p class="text-ios-subtext mb-6 max-w-lg">
+                        Autonomous browser agent using LangChain (Groq) + Playwright. Features Notion/Firestore persistent memory for complex workflow automation.
+                    </p>
+                    <div class="flex gap-3">
+                        <span class="text-xs font-medium text-white bg-white/10 px-3 py-1 rounded-full">LangChain</span>
+                        <span class="text-xs font-medium text-white bg-white/10 px-3 py-1 rounded-full">Playwright</span>
+                    </div>
+                </div>
+
+                <!-- Tall Project -->
+                <div class="reveal md:col-span-1 glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all duration-500 group cursor-default">
+                     <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center text-purple-400 mb-6">
+                        <i class="fas fa-search text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">GPT-4o Agent</h3>
+                    <p class="text-ios-subtext text-sm mb-6">
+                        LangGraph pipeline integrating arXiv API and structured RAG for research briefs.
+                    </p>
+                </div>
+
+                <!-- Wide Project -->
+                <div class="reveal md:col-span-3 glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all duration-500 group cursor-default flex flex-col md:flex-row items-center gap-8">
+                     <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center text-green-400 shrink-0">
+                        <i class="fas fa-hands-asl-interpreting text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Sign Language Translator</h3>
+                        <p class="text-ios-subtext max-w-2xl">
+                            Real-time Indian Sign Language Text system combining CNNs, OpenCV, and NLP. Enables seamless bidirectional communication for the hearing impaired.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Education Grid -->
+    <section id="skills" class="py-32 px-6 bg-black">
+        <div class="max-w-5xl mx-auto">
+             <div class="grid md:grid-cols-4 gap-6">
+                 
+                 <!-- Education Block -->
+                 <div class="reveal md:col-span-2 glass-panel p-8 rounded-3xl">
+                     <h3 class="text-lg font-semibold text-ios-subtext uppercase tracking-wide mb-6">Education</h3>
+                     <div class="space-y-6">
+                         <div>
+                             <div class="text-white font-medium">PICT, Pune</div>
+                             <div class="text-sm text-ios-subtext">BE in E&TC • GPA 9.51</div>
+                         </div>
+                         <div>
+                             <div class="text-white font-medium">Sri Chaitanya, Hyderabad</div>
+                             <div class="text-sm text-ios-subtext">HSC • 98.5%</div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <!-- Skills Block -->
+                 <div class="reveal md:col-span-2 glass-panel p-8 rounded-3xl">
+                    <h3 class="text-lg font-semibold text-ios-subtext uppercase tracking-wide mb-6">Technical Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 border border-ios-border rounded-lg text-sm text-ios-subtext hover:text-white hover:border-white transition-colors">Python</span>
+                        <span class="px-3 py-1 border border-ios-border rounded-lg text-sm text-ios-subtext hover:text-white hover:border-white transition-colors">Java</span>
+                        <span class="px-3 py-1 border border-ios-border rounded-lg text-sm text-ios-subtext hover:text-white hover:border-white transition-colors">LangChain</span>
+                        <span class="px-3 py-1 border border-ios-border rounded-lg text-sm text-ios-subtext hover:text-white hover:border-white transition-colors">RAG</span>
+                        <span class="px-3 py-1 border border-ios-border rounded-lg text-sm text-ios-subtext hover:text-white hover:border-white transition-colors">SCORM</span>
+                        <span class="px-3 py-1 border border-ios-border rounded-lg text-sm text-ios-subtext hover:text-white hover:border-white transition-colors">Computer Vision</span>
+                        <span class="px-3 py-1 border border-ios-border rounded-lg text-sm text-ios-subtext hover:text-white hover:border-white transition-colors">ChromaDB</span>
+                    </div>
+                 </div>
+
+                 <!-- Volunteering -->
+                 <div class="reveal md:col-span-4 glass-panel p-8 rounded-3xl flex items-center justify-between">
+                     <div>
+                         <h3 class="text-xl font-bold mb-1">PICT Nakshatra Co-Founder</h3>
+                         <p class="text-ios-subtext">Led autonomous rocketry projects. ISRO/InSpace Finalist.</p>
+                     </div>
+                     <i class="fas fa-rocket text-ios-accent text-3xl opacity-50"></i>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- Freelance / Contact Form Section -->
+    <section id="contact" class="py-32 px-6 bg-zinc-950">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="reveal text-4xl md:text-5xl font-bold mb-4">Start a Project.</h2>
+            <p class="reveal delay-100 text-ios-subtext mb-12">
+                Specializing in AI Agents, RAG Pipelines, and Custom GenAI Solutions.
+            </p>
+
+            <form action="https://formsubmit.co/pranavkodlinge@gmail.com" method="POST" class="reveal delay-200 glass-panel p-8 rounded-3xl text-left space-y-6">
+                <!-- HoneyPot for Spam -->
+                <input type="text" name="_honey" style="display:none">
+                <!-- Disable Captcha -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Success Redirect -->
+                <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html">
+                <!-- Email Subject -->
+                <input type="hidden" name="_subject" value="New AI Agent Gig Inquiry!">
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase text-ios-subtext font-semibold tracking-wide">Name</label>
+                        <input type="text" name="name" required class="w-full bg-zinc-900/50 border border-white/10 rounded-xl p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-ios-accent transition-colors" placeholder="John Doe">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase text-ios-subtext font-semibold tracking-wide">Email</label>
+                        <input type="email" name="email" required class="w-full bg-zinc-900/50 border border-white/10 rounded-xl p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-ios-accent transition-colors" placeholder="john@company.com">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-xs uppercase text-ios-subtext font-semibold tracking-wide">Project Type</label>
+                    <div class="relative">
+                        <select name="project_type" class="w-full bg-zinc-900/50 border border-white/10 rounded-xl p-4 text-white appearance-none focus:outline-none focus:border-ios-accent transition-colors cursor-pointer">
+                            <option value="AI Agent Development">AI Agent Development</option>
+                            <option value="RAG Pipeline">RAG Pipeline Architecture</option>
+                            <option value="Consulting">Technical Consulting</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-ios-subtext">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-xs uppercase text-ios-subtext font-semibold tracking-wide">Project Details</label>
+                    <textarea name="message" rows="4" required class="w-full bg-zinc-900/50 border border-white/10 rounded-xl p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-ios-accent transition-colors" placeholder="Tell me about your goals..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-gray-200 transition-transform hover:scale-[1.02] active:scale-95">
+                    Send Proposal
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 text-center border-t border-ios-border bg-black">
+        <h2 class="text-2xl font-bold mb-8 text-ios-subtext">Connect Elsewhere.</h2>
+        
+        <div class="flex flex-col items-center justify-center gap-8">
+            <div class="flex gap-8">
+                <a href="https://github.com/Aaron-Warner-4504" target="_blank" aria-label="GitHub" class="text-ios-subtext hover:text-white transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-github text-3xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/pranav-kodlinge" target="_blank" aria-label="LinkedIn" class="text-ios-subtext hover:text-white transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-linkedin text-3xl"></i>
+                </a>
+                <a href="mailto:pranavkodlinge@gmail.com" aria-label="Email" class="text-ios-subtext hover:text-white transition-all duration-300 hover:scale-110">
+                    <i class="fas fa-envelope text-3xl"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-12 text-sm text-ios-subtext">
+            &copy; 2025 Pranav Kodlinge. Designed with Intelligence.
+        </div>
+    </footer>
+
+    <script>
+        // --- Animation Logic (Intersection Observer) ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
